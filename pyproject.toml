@@ -1,0 +1,15 @@
+[project]
+name = "fabricaHub_backEnd"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Fabrica", email = "fabricadesoftware.araquari@ifc.edu.br"},
+]
+dependencies = []
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
