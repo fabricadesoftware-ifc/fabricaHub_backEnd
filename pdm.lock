@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:1be4cb830a8324f61ff9d1f27339a28e957055ed4a2a5c945d63d6f72930a400"
+content_hash = "sha256:9aaf46964b89e2052074402b359f5b28a4834e56a8d26870ff91ea3487050b2b"
 
 [[metadata.targets]]
 requires_python = "==3.12.*"
@@ -38,6 +38,26 @@ dependencies = [
 files = [
     {file = "django-6.0.5-py3-none-any.whl", hash = "sha256:9d58a7cb49244e74c8e161d5e403a46d6209f1009ba40f5a66d6aa0d0786a8f0"},
     {file = "django-6.0.5.tar.gz", hash = "sha256:bc6d6872e98a2864c836e42edd644b362db311147dd5aa8d5b82ba7a032f5269"},
+]
+
+[[package]]
+name = "netifaces"
+version = "0.11.0"
+summary = "Portable network interface information."
+groups = ["default"]
+files = [
+    {file = "netifaces-0.11.0.tar.gz", hash = "sha256:043a79146eb2907edf439899f262b3dfe41717d34124298ed281139a8b93ca32"},
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.2.2"
+requires_python = ">=3.10"
+summary = "Read key-value pairs from a .env file and set them as environment variables"
+groups = ["default"]
+files = [
+    {file = "python_dotenv-1.2.2-py3-none-any.whl", hash = "sha256:1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a"},
+    {file = "python_dotenv-1.2.2.tar.gz", hash = "sha256:2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3"},
 ]
 
 [[package]]
