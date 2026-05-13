@@ -15,20 +15,21 @@ services:
     ports:
       - "6379:6379"
 
-  # web:
-  #   build: .
-  #   # Rodando o Django direto pelo Python do container
-  #   command: python manage.py runserver 0.0.0.0:19003
-  #   volumes:
-  #     - .:/app
-  #     - /app/.venv
-  #   ports:
-  #     - "19003:19003"
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - db
-  #     - redis
+  web:
+    build: .
+    # Chamamos o python direto. Se o PDM instalou no sistema, ele vai achar.
+    command: python manage.py runserver 0.0.0.0:19003
+    volumes:
+      - .:/app
+      # ESTE É O TRUQUE: protege a venv ou pacotes internos
+      - /app/.venv
+    ports:
+      - "19003:19003"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
 
 volumes:
   postgres_data:

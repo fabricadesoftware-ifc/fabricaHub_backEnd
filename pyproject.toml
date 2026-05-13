@@ -15,5 +15,4 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-pre_dev = "python ./scripts/set_my_ip.py"
 dev = "python manage.py runserver 0.0.0.0:19003"

@@ -44,4 +44,4 @@ docker compose up -d
 ```
 pdm run dev
 ```
-> Observação: Ira rodar o script/set_my_ip.py e gravando seu IP no .env para o settings/base.py saber qual IP liberar durante o desenvolvimento ( porta 19003 por padrão)
+> Por padrão ira iniciar na porta 19003
