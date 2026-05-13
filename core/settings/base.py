@@ -98,7 +98,20 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+if MODE in ["PRODUCTION"]:
+    CORS_ALLOWED_ORIGINS = [
+        "https://fabricahub.com",
+        "https://www.fabricahub.com",
+    ]
+    CORS_ALLOW_ALL_ORIGINS = False
+
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
+    CORS_ALLOW_ALL_ORIGINS = True
+
 AUTH_USER_MODEL = 'fabricahub.Usuario'
 
 # Internationalization
