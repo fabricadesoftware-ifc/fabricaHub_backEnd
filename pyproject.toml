@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "Fabrica", email = "fabricadesoftware.araquari@ifc.edu.br"},
 ]
-dependencies = ["django>=6.0.5", "python-dotenv>=1.2.2", "netifaces>=0.11.0", "djangorestframework>=3.17.1", "djangorestframework-simplejwt>=5.5.1"]
+dependencies = ["django>=6.0.5", "python-dotenv>=1.2.2", "netifaces>=0.11.0", "djangorestframework>=3.17.1", "djangorestframework-simplejwt>=5.5.1", "django-cors-headers>=4.9.0"]
 requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
