@@ -9,11 +9,11 @@ MODE = os.getenv("MODE")
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False")
 ALLOWED_HOSTS = ["*"]
-
+PORT = os.getenv("PORT", "19003")
 if MODE in ["PRODUCTION"]:
     MEDIA_URL = '/media/'
 else:
-    MEDIA_URL = f"http://127.0.0.1:19003/media/"
+    MEDIA_URL = f"http://127.0.0.1:{PORT}/media/"
  
 # Application definition
 

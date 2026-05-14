@@ -15,4 +15,4 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-dev = "python manage.py runserver 0.0.0.0:19003"
+dev = { cmd = "python manage.py runserver 0.0.0.0:${PORT}", env_file = ".env" }

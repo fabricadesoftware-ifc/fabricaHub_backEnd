@@ -12,7 +12,8 @@ Esta documentação segue em constante atualização.
 ## ⚙️ Configuração do Ambiente
 #### 1. Pré-requisitos
 
-Certifique-se de ter o Python 3.12 instalado. Se ainda não possui o PDM, instale-o:
+Certifique-se de ter o Python 3.12 instalado. 
+E se você ainda não possuir o PDM instalado, realize a instalação com:
 
 ```
 pip install pdm
@@ -34,14 +35,14 @@ cp .env.example .env
 
 
 ## 🚀 Inicializacao
-#### 1. Inicialize o Postgres e o Redis:
+#### 1. Vai inicializar nossa aplicação (Django, Postgres e Redis):
 
 ```
 docker compose up -d
 ```
-#### 2. Para inicializar a aplicação basta usar:
+> Por padrão nossa aplicação do django se iniciará na porta 19003
 
+- Para você consultar os logs basta utilizar no mesmo diretório:
 ```
-pdm run dev
+docker compose logs
 ```
-> Por padrão ira iniciar na porta 19003
