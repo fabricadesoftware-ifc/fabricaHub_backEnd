@@ -14,14 +14,12 @@ services:
     image: redis:7-alpine
     ports:
       - "6379:6379"
-
   web:
     build: .
-    # Chamamos o python direto. Se o PDM instalou no sistema, ele vai achar.
-    command: python manage.py runserver 0.0.0.0:19003
+    command: pdm run python manage.py runserver 0.0.0.0:19003
     volumes:
       - .:/app
-      # ESTE É O TRUQUE: protege a venv ou pacotes internos
+      # ADICIONE ESTA LINHA ABAIXO:
       - /app/.venv
     ports:
       - "19003:19003"
