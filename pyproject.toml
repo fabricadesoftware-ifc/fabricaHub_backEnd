@@ -15,4 +15,5 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
+migrate = { cmd = "python manage.py migrate" }
 dev = { cmd = "python manage.py runserver 0.0.0.0:${PORT}", env_file = ".env" }
