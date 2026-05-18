@@ -1,0 +1,32 @@
+# Cache do Python e arquivos compilados locais
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ambientes virtuais locais (nunca devem ir para o build)
+.venv/
+env/
+venv/
+ENV/
+__pypackages__/
+
+# Configurações locais do PDM que podem travar o container
+.pdm-python
+.pdm.toml
+
+# Arquivos sensíveis e credenciais
+.env
+*.pem
+*.key
+.git/
+.gitignore
+
+# Documentação e arquivos de IDE
+.vscode/
+.idea/
+README.md
+docker/   
