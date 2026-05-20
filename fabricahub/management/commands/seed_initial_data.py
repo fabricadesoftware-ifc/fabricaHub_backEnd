@@ -2,7 +2,7 @@ from datetime import date
 
 from django.core.management.base import BaseCommand
 
-from fabricahub.models import Membro, PerformanceLog, Projeto, Usuario
+from fabricahub.models import Membro, LogAuditoria, Projeto, Usuario, ProjetoMembro
 
 
 class Command(BaseCommand):
@@ -10,17 +10,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         usuario, created = Usuario.objects.get_or_create(
-            username="arthur",
+            username="fabrica",
             defaults={
-                "first_name": "Arthur",
-                "last_name": "Lanz",
-                "email": "arthur@example.com",
-                "tipo_usuario": Usuario.TipoUsuario.MEMBRO,
+                "first_name": "Fabrica",
+                "last_name": "de Software",
+                "email": "fabricadesoftware@ifc.edu.br",
+                "tipo_usuario": Usuario.TipoUsuario.TECHLEAD,
             },
         )
 
         if created:
-            usuario.set_password("123456")
+            usuario.set_password("fabrica")
             usuario.save()
 
         membro, _ = Membro.objects.get_or_create(
@@ -41,16 +41,23 @@ class Command(BaseCommand):
                 "prazo_entrega": date(2026, 12, 1),
             },
         )
-
-        projeto.membros.add(membro)
-
-        PerformanceLog.objects.get_or_create(
-            membro=membro,
+ 
+        ProjetoMembro.objects.get_or_create(
             projeto=projeto,
-            contexto_entrega="Entrega inicial da API business",
+            membro=membro,
             defaults={
-                "metrica_entrega": 9.50,
-                "observacao": "Seed inicial para desenvolvimento",
+                "papel_no_projeto": "Desenvolvedor Backend",
+                "data_entrada": date(2026, 5, 15),
+            }
+        )
+
+        LogAuditoria.objects.get_or_create(
+            operador=membro,
+            acao="Criação Inicial de Projeto",
+            entidade_afetada="Projeto",
+            entidade_id=projeto.id,  # Salvamos apenas o ID do projeto de forma genérica
+            defaults={
+                "detalhes": f"Entrega inicial da API business para o projeto {projeto.nome}. Métrica antiga: 9.50. Observação: Seed inicial para desenvolvimento",
             },
         )
 
