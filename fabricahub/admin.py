@@ -1,13 +1,26 @@
 from django.contrib import admin
 
-from fabricahub.models import Membro, PerformanceLog, Projeto, Usuario
+from fabricahub.models import Membro, Projeto, Usuario, LogAuditoria
 
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ("id", "username", "first_name", "last_name", "email", "tipo_usuario")
-    search_fields = ("username", "first_name", "last_name", "email")
-
+    list_display = ("id", "username", "first_name", "last_name", "email", "tipo_usuario", "is_active", "is_staff", "is_superuser", "last_login")
+    # search_fields = ("username", "first_name", "last_name", "email")
+    fieldsets = (
+        ("Informações de Credenciais", {
+            "fields": ("username", "password")
+        }),
+        ("Informações Pessoais", {
+            "fields": ("first_name", "last_name", "email", "tipo_usuario")
+        }),
+        ("Permissões e Status", {
+            "fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")
+        }),
+        ("Datas Importantes", {
+            "fields": ("last_login",)
+        }), 
+    )
 
 @admin.register(Membro)
 class MembroAdmin(admin.ModelAdmin):
@@ -23,7 +36,7 @@ class ProjetoAdmin(admin.ModelAdmin):
     list_filter = ("status",)
 
 
-@admin.register(PerformanceLog)
-class PerformanceLogAdmin(admin.ModelAdmin):
-    list_display = ("id", "membro", "projeto", "metrica_entrega", "created_at")
-    search_fields = ("membro__usuario__username", "projeto__nome")
+@admin.register(LogAuditoria)
+class LogAuditoriaAdmin(admin.ModelAdmin):
+    list_display = ("id", "operador", "acao", "entidade_afetada", "created_at")
+    search_fields = ("operador__username", "acao", "entidade_afetada")

@@ -7,6 +7,6 @@ class Usuario(AbstractUser):
         MEMBRO = 1, "Membro"
         PROFESSOR = 2, "Professor"
         TECHLEAD = 3, "Techlead"
-    tipo_usuario = models.IntegerField(_("User Type"), choices=TipoUsuario.choices, default=TipoUsuario.MEMBRO)
+    tipo_usuario = models.IntegerField(choices=TipoUsuario.choices, default=TipoUsuario.MEMBRO, verbose_name=_("Tipo de Usuário"))
     def __str__(self):
         return self.first_name
