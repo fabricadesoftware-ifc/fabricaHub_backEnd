@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from fabricahub.views import (
     MembroViewSet,
-    PerformanceLogViewSet,
+    LogAuditoriaViewSet,
     ProjetoViewSet,
     UsuarioViewSet,
 )
@@ -14,7 +14,7 @@ router = DefaultRouter()
 router.register(r"usuarios", UsuarioViewSet, basename="usuario")
 router.register(r"membros", MembroViewSet, basename="membro")
 router.register(r"projetos", ProjetoViewSet, basename="projeto")
-router.register(r"performance-logs", PerformanceLogViewSet, basename="performance-log")
+router.register(r"logs-auditoria", LogAuditoriaViewSet, basename="log-auditoria")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
