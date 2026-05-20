@@ -1,8 +1,29 @@
 from django.contrib import admin
-from fabricahub.models import Usuario
-# Register your models here.
+
+from fabricahub.models import Membro, PerformanceLog, Projeto, Usuario
+
+
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'email', 'first_name', 'tipo_usuario')
-    search_fields = ('username', 'email', 'first_name', 'tipo_usuario')
-    list_filter = ('is_staff', 'is_active')
+    list_display = ("id", "username", "first_name", "last_name", "email", "tipo_usuario")
+    search_fields = ("username", "first_name", "last_name", "email")
+
+
+@admin.register(Membro)
+class MembroAdmin(admin.ModelAdmin):
+    list_display = ("id", "usuario", "curso", "semestre", "squad")
+    search_fields = ("usuario__username", "usuario__first_name", "usuario__last_name", "curso")
+    list_filter = ("squad", "semestre")
+
+
+@admin.register(Projeto)
+class ProjetoAdmin(admin.ModelAdmin):
+    list_display = ("id", "nome", "status", "data_inicio", "prazo_entrega")
+    search_fields = ("nome",)
+    list_filter = ("status",)
+
+
+@admin.register(PerformanceLog)
+class PerformanceLogAdmin(admin.ModelAdmin):
+    list_display = ("id", "membro", "projeto", "metrica_entrega", "created_at")
+    search_fields = ("membro__usuario__username", "projeto__nome")
