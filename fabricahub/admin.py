@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from fabricahub.models import Membro, Projeto, Usuario, LogAuditoria
+from fabricahub.models import Membro, Projeto, Usuario, LogAuditoria, Task, ProjetoMembro
 
 
 @admin.register(Usuario)
@@ -40,3 +40,13 @@ class ProjetoAdmin(admin.ModelAdmin):
 class LogAuditoriaAdmin(admin.ModelAdmin):
     list_display = ("id", "operador", "acao", "entidade_afetada", "created_at")
     search_fields = ("operador__username", "acao", "entidade_afetada")
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ("id", "titulo", "descricao", "status", "projeto", "responsavel")
+    search_fields = ("titulo", "descricao")
+    #
+@admin.register(ProjetoMembro)
+class ProjetoMembroAdmin(admin.ModelAdmin):
+    list_display = ("id", "projeto", "membro")
+    search_fields = ("projeto__nome", "membro__usuario__username")

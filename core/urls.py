@@ -8,6 +8,7 @@ from fabricahub.views import (
     LogAuditoriaViewSet,
     ProjetoViewSet,
     UsuarioViewSet,
+    TaskViewSet
 )
 
 router = DefaultRouter()
@@ -15,6 +16,7 @@ router.register(r"usuarios", UsuarioViewSet, basename="usuario")
 router.register(r"membros", MembroViewSet, basename="membro")
 router.register(r"projetos", ProjetoViewSet, basename="projeto")
 router.register(r"logs-auditoria", LogAuditoriaViewSet, basename="log-auditoria")
+router.register(r"tasks", TaskViewSet, basename="task")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
