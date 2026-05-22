@@ -9,4 +9,4 @@ class Usuario(AbstractUser):
         TECHLEAD = 3, "Techlead"
     tipo_usuario = models.IntegerField(choices=TipoUsuario.choices, default=TipoUsuario.MEMBRO, verbose_name=_("Tipo de Usuário"))
     def __str__(self):
-        return self.first_name
+        return self.first_name if self.first_name.strip() else self.username
