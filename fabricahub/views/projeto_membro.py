@@ -1,8 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 
 from fabricahub.models import ProjetoMembro
-from fabricahub.serializers import Projeto
+from fabricahub.serializers import ProjetoMembroSerializer
 
-class ProjetoViewSet(ModelViewSet):
-    queryset = Projeto.objects.all()
-    serializer_class = ProjetoSerializer
+class ProjetoMembroViewSet(ModelViewSet):
+    queryset = ProjetoMembro.objects.all()
+    serializer_class = ProjetoMembroSerializer

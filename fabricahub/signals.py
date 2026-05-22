@@ -24,8 +24,9 @@ def encerrar_projeto_finalizado(sender, instance, created, **kwargs):
     Caso o projeto mude de status para 'Finalizado', 
     atualiza a data_fim de todos os vínculos na tabela intermediária.
     """
+    data_atual = timezone.now().date()
     if instance.status == Projeto.Status.FINALIZADO:
         ProjetoMembro.objects.filter(
             projeto=instance.id,
-            data_fim__isnull=True
-        ).update(data_fim=timezone.now().date())
+            data_saida__gte=data_atual
+        ).update(data_saida=timezone.now().date())
