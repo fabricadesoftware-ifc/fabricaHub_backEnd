@@ -20,11 +20,11 @@ class Projeto(BaseModel):
     )
     data_inicio = models.DateField()
     prazo_entrega = models.DateField()
-    membros = models.ManyToManyField(
-        Membro,
-        related_name="projetos",
-        blank=True,
-    )
+    # membros = models.ManyToManyField(
+    #     Membro,
+    #     related_name="projetos",
+    #     blank=True,
+    # )
 
     class Meta:
         verbose_name = "Projeto"
