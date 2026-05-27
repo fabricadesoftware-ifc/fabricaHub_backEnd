@@ -1,12 +1,18 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from fabricahub.models import Membro, PerformanceLog, Projeto, Usuario
 
 
 @admin.register(Usuario)
-class UsuarioAdmin(admin.ModelAdmin):
+class UsuarioAdmin(UserAdmin):
     list_display = ("id", "username", "first_name", "last_name", "email", "tipo_usuario")
     search_fields = ("username", "first_name", "last_name", "email")
+    
+    fieldsets = UserAdmin.fieldsets + (
+        ('Configurações do FábricaHUB', {'fields': ('tipo_usuario',)}),
+    )
+
 
 
 @admin.register(Membro)
