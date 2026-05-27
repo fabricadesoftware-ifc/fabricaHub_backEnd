@@ -1,11 +1,12 @@
 from .membro import MembroViewSet
-from .performance_log import PerformanceLogViewSet
+from .log_auditoria import LogAuditoriaViewSet
 from .projeto import ProjetoViewSet
 from .usuario import UsuarioViewSet
-
+from .task import TaskViewSet
 __all__ = [
     "UsuarioViewSet",
     "MembroViewSet",
     "ProjetoViewSet",
-    "PerformanceLogViewSet",
+    "LogAuditoriaViewSet",
+    "TaskViewSet",
 ]
