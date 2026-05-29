@@ -1,27 +1,34 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from fabricahub.models import Membro, Projeto, Usuario, LogAuditoria, Task, ProjetoMembro
 
 
 @admin.register(Usuario)
-class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ("username", "first_name", "last_name", "email", "tipo_usuario", "is_active", "is_staff", "is_superuser", "last_login")
-    # search_fields = ("username", "first_name", "last_name", "email")
-    fieldsets = (
-        ("Informações de Credenciais", {
-            "fields": ("username", "password")
-        }),
-        ("Informações Pessoais", {
-            "fields": ("first_name", "last_name", "email", "tipo_usuario")
-        }),
-        ("Permissões e Status", {
-            "fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")
-        }),
-        ("Datas Importantes", {
-            "fields": ("last_login",)
-        }), 
+class UsuarioAdmin(UserAdmin):
+    list_display = ("id", "username", "first_name", "last_name", "email", "tipo_usuario")
+    search_fields = ("username", "first_name", "last_name", "email")
+    
+    fieldsets = UserAdmin.fieldsets + (
+        ('Configurações do FábricaHUB', {'fields': ('tipo_usuario',)}),
     )
-
+# class UsuarioAdmin(admin.ModelAdmin):
+#     list_display = ("username", "first_name", "last_name", "email", "tipo_usuario", "is_active", "is_staff", "is_superuser", "last_login")
+#     # search_fields = ("username", "first_name", "last_name", "email")
+#     fieldsets = (
+#         ("Informações de Credenciais", {
+#             "fields": ("username", "password")
+#         }),
+#         ("Informações Pessoais", {
+#             "fields": ("first_name", "last_name", "email", "tipo_usuario")
+#         }),
+#         ("Permissões e Status", {
+#             "fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")
+#         }),
+#         ("Datas Importantes", {
+#             "fields": ("last_login",)
+#         }), 
+#     )
 @admin.register(Membro)
 class MembroAdmin(admin.ModelAdmin):
     list_display = ("usuario", "curso", "semestre", "squad")
